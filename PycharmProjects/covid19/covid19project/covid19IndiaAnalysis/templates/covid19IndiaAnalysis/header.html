@@ -1,0 +1,22 @@
+<script language="JavaScript">
+function reloadData()
+{
+    document.getElementById("reload").disabled=true
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "/refreshData", false ); // false for synchronous request
+    xmlHttp.send( null );
+    var response = xmlHttp.responseText=="Data loaded successfully"?xmlHttp.responseText:"There was a problem with the data load. Please check the logs for additional details."
+    alert(response);
+    document.getElementById("reload").disabled=false;
+}
+
+</script>
+<div>
+<table width="100%"><tr><td><div style="text-align:left">
+    <button id="reload" onclick="reloadData()">Refresh All Data</button>
+</div>
+</td><td><div style="text-align:right">
+    <a href="/">Home Page</a> | <a href="/stateComp">State Comparison</a> |  <a href="/top10States">Top 10 States</a>
+</div>
+</td></tr>
+</div>

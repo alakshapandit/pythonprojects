@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Covid-19 in India - Analysis</title>
+    <link rel="shortcut icon" href="{%  static 'coronavirus.png' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+{% include "covid19IndiaAnalysis/header.html" %}
+<center><h1>Covid-19 situation in India - Analysis</h1></center>
+<table>
+    <tr><td>
+<form action = "" method = "get">
+{{ form.as_p }}
+    <!--<select name="state" id="state">
+    <label for="state">State: </label>
+
+    <input id="state" type="text" name="state">
+    {% for row in statelist %}
+        {% if row.1 == state %}
+            <option value="{{ row.1 }}" selected>{{ row.0 }}</option>
+        {% else %}
+            <option value="{{ row.1 }}">{{ row.0 }}</option>
+        {% endif %}
+    {% endfor %}
+    </select>-->
+
+    <div style="text-align:center"><input type="submit" value="Submit"></div>
+</form>
+<!--State: {{ state }}
+        {{ categories }}-->
+</td>
+
+
+    <!--<td>
+        Vaccinations
+    </td>-->
+
+    <td>
+
+        <img src="data:image/png;base64,{{ data }}" alt="" height="700" ,width="700"/>
+    </td>
+    <!--<td>
+        <img src="data:image/png;base64,{{ vacc_data }}" alt="" height="400" ,width="400"/>
+    </td>-->
+    </tr>
+</table>
+</body>
+</html>
