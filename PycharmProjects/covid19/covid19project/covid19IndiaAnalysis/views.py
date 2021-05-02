@@ -8,8 +8,12 @@ from .forms import InputForm,StateCompForm,Top10StatesForm
 import datetime
 # Create your views here.
 
-
 def home(request):
+    res = project.show_misc_plots()
+    #print(res)
+    return render(request, 'covid19IndiaAnalysis/home.html', {'data1':res['uri1'], 'data2':res['uri2']})
+
+def stateAnalysis(request):
     details = InputForm(request.GET)
     uri=""
     state="TT"
@@ -37,7 +41,7 @@ def home(request):
     if details.is_valid():
         uri = project.show_plot(state,start_date,end_date,categories,type,typeOfChart)
         #vacc_uri = project.show_vacc_plot(state, start_date, end_date)
-    return render(request, 'covid19IndiaAnalysis/home.html', {'data':uri,'state':state,'categories':categories,'type':type,'form':InputForm(initial={'state': state,'start_date':start_date,'end_date':end_date,'categories':categories,'type':type,'typeOfChart':typeOfChart})})
+    return render(request, 'covid19IndiaAnalysis/stateAnalysis.html', {'data':uri,'state':state,'categories':categories,'type':type,'form':InputForm(initial={'state': state,'start_date':start_date,'end_date':end_date,'categories':categories,'type':type,'typeOfChart':typeOfChart})})
 
 
 def about(request):
